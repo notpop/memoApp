@@ -26,7 +26,6 @@ export default function MemoDetail() {
           dawdwmakdmkawmdkamdkmakdmkamkdmakmd
           dwamdkwmadklmawldmwakmdkamdk
           dawmdklwamdklamdlmadlmawlkd
-          dmkadmwkmlkwml
         </Text>
       </ScrollView>
 
