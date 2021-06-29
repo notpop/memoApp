@@ -23,13 +23,10 @@ export default function MemoDetail() {
           ・ピーマン
           ・豚肉
           ・ごま油
-          dawdwmakdmkawmdkamdkmakdmkamkdmakmd
-          dwamdkwmadklmawldmwakmdkamdk
-          dawmdklwamdklamdlmadlmawlkd
         </Text>
       </ScrollView>
 
-      <CircleButton style={{ top: 160, bottom: 'auto' }}></CircleButton>
+      <CircleButton style={{ top: 150, bottom: 'auto' }}></CircleButton>
     </View>
   );
 }
