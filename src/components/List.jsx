@@ -1,6 +1,7 @@
-import { Feather } from '@expo/vector-icons';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
+import Icon from './Icon';
 
 export default function List() {
   return (
@@ -12,7 +13,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
@@ -23,7 +24,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
@@ -34,7 +35,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
@@ -45,7 +46,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
@@ -56,7 +57,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
@@ -67,7 +68,7 @@ export default function List() {
         </View>
 
         <View>
-          <Feather name="x" size={16} color="gray" />
+          <Icon name="delete" size={24} color="gray" />
         </View>
       </View>
 
