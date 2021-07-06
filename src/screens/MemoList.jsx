@@ -10,7 +10,7 @@ export default function MemoList() {
     <View style={styles.container}>
       <AppBar />
       <List />
-      <CircleButton />
+      <CircleButton name="plus" />
     </View>
   );
 }
