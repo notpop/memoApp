@@ -9,6 +9,6 @@ import MemoEdit from './src/screens/MemoEdit';
 
 export default function App() {
   return (
-    <SignUp />
+    <MemoList />
   );
 }
