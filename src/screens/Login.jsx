@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import firebase from 'firebase';
 
@@ -9,21 +9,34 @@ export default function LogIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handlePress() {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
-
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],
         });
-      })
-      .catch((error) => {
-        console.log(error.code, error.message);
-        Alert.alert(error.message);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  function handlePress() {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      const { user } = userCredential;
+      console.log(user.uid);
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'MemoList' }],
       });
+    })
+    .catch((error) => {
+      console.log(error.code, error.message);
+      Alert.alert(error.message);
+    });
   }
 
   return (
