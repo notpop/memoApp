@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 import Button from '../components/Button';
 
 export default function LogIn(props) {
   const { navigation } = props;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
-        <TextInput style={styles.input} placeholder="email-address" />
-        <TextInput style={styles.input} placeholder="password" />
+        <TextInput
+          style={styles.input}
+          placeholder="email-address"
+          value={email}
+          onChangeText={(text) => { setEmail(text); }}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="password"
+          value={password}
+          onChangeText={(text) => { setPassword(text); }}
+          autoCapitalize="none"
+          secureTextEntry
+          textContentType="password"
+        />
         <Button
           label='Submit'
           onPress={() => {
