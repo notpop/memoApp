@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
+import firebase  from 'firebase';
+
+import { firebaseConfig } from './env';
 
 import LogIn from './src/screens/LogIn';
 import SignUp from './src/screens/SignUp';
@@ -11,11 +14,15 @@ import MemoEdit from './src/screens/MemoEdit';
 
 const Stack = createStackNavigator();
 
+if (0 === firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SignUp"
+        initialRouteName="LogIn"
         screenOptions={{
           headerStyle: { backgroundColor: '#A9CCE3' },
           headerTitleStyle: { color: 'white' },
