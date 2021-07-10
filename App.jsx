@@ -12,11 +12,13 @@ import MemoDetail from './src/screens/MemoDetail';
 import MemoCreate from './src/screens/MemoCreate';
 import MemoEdit from './src/screens/MemoEdit';
 
-const Stack = createStackNavigator();
+require('firebase/firestore');
 
 if (0 === firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
