@@ -5,5 +5,5 @@ export function dateToString(date) {
     return '';
   }
 
-  return format(date, 'yyyy年M月d日 HH時mm分');
+  return format(date, 'yyyy年MM月dd日 HH時mm分ss秒');
 }

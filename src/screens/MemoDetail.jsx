@@ -20,9 +20,8 @@ export default function MemoDetail(props) {
       const database = firebase.firestore();
       const reference = database.collection(`users/${currentUser.uid}/memos`).doc(id);
       unsubscribe = reference.onSnapshot((document) => {
-        //console.log(document.id, document.data());
         const data = document.data();
-        const id = data.id;
+        const id = document.id;
         const bodyText = data.bodyText;
         const updatedAt = data.updatedAt.toDate();
         setMemo({
@@ -52,7 +51,7 @@ export default function MemoDetail(props) {
       <CircleButton
         style={{ top: 55, bottom: 'auto' }}
         name="pencil"
-        onPress={() => { navigation.navigate('MemoEdit'); }}
+        onPress={() => { navigation.navigate('MemoEdit', { id: memo.id, bodyText: memo.bodyText }); }}
       />
     </View>
   );
