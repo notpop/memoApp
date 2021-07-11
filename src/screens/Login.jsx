@@ -3,11 +3,13 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'reac
 import firebase from 'firebase';
 
 import Button from '../components/Button';
+import Loading from '../components/Loading';
 
 export default function LogIn(props) {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -17,12 +19,16 @@ export default function LogIn(props) {
           routes: [{ name: 'MemoList' }],
         });
       }
+      else {
+        setIsLoading(false);
+      }
     });
 
     return unsubscribe;
   }, []);
 
   function handlePress() {
+    setIsLoading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       const { user } = userCredential;
@@ -36,11 +42,15 @@ export default function LogIn(props) {
     .catch((error) => {
       console.log(error.code, error.message);
       Alert.alert(error.message);
+    })
+    .then(() => {
+      setIsLoading(false);
     });
   }
 
   return (
     <View style={styles.container}>
+      <Loading isLoading={isLoading}/>
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput
