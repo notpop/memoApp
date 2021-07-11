@@ -29,7 +29,6 @@ export default function MemoList(props) {
       unsubscribe = reference.onSnapshot((snapShot) => {
         const userMemos = [];
         snapShot.forEach((document) => {
-          //console.log(document.id, document.data());
           const id = document.id;
           const data = document.data();
           const bodyText = data.bodyText;

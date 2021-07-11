@@ -4,6 +4,7 @@ import firebase from 'firebase';
 
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import { translateErrors } from '../helpers';
 
 export default function LogIn(props) {
   const { navigation } = props;
@@ -40,8 +41,8 @@ export default function LogIn(props) {
       });
     })
     .catch((error) => {
-      console.log(error.code, error.message);
-      Alert.alert(error.message);
+      const errorMessage = translateErrors(error.code);
+      Alert.alert(errorMessage.title, errorMessage.description);
     })
     .then(() => {
       setIsLoading(false);

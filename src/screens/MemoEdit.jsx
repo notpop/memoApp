@@ -5,6 +5,7 @@ import firebase from 'firebase';
 
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
+import { translateErrors } from '../helpers';
 
 export default function MemoEdit(props) {
   const { navigation, route } = props;
@@ -24,7 +25,8 @@ export default function MemoEdit(props) {
         navigation.goBack();
       })
       .catch((error) => {
-        Alert.alert(error.message);
+        const errorMessage = translateErrors(error.code);
+        Alert.alert(errorMessage.title, errorMessage.description);
       });
     }
   }
@@ -35,6 +37,7 @@ export default function MemoEdit(props) {
         <TextInput
           value={body}
           multiline
+          autoCapitalize="none"
           style={styles.input}
           onChangeText={(text) => { setBody(text); }}
         />

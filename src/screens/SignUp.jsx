@@ -3,6 +3,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'reac
 import firebase from 'firebase';
 
 import Button from '../components/Button';
+import { translateErrors } from '../helpers';
 
 export default function SignUp(props) {
   const { navigation } = props;
@@ -21,8 +22,8 @@ export default function SignUp(props) {
       });
     })
     .catch((error) => {
-      console.log(error.code, error.message);
-      Alert.alert(error.message);
+      const errorMessage = translateErrors(error.code);
+      Alert.alert(errorMessage.title, errorMessage.description);
     });
   }
 
